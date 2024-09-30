@@ -1,0 +1,20 @@
+<div class="jumbotron text-center bg-primary text-white py-5">
+  <h1 class="display-4">Список сотрудников КГУ</h1>
+  <p class="lead">Узнайте больше о преподавателях нашего университета</p>
+</div>
+
+<div class="container">
+  <input type="text" class="form-control search-bar mb-4" placeholder="Введите имя сотрудника" [(ngModel)]="searchText">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let staff of staffList | filter: searchText">
+      <div class="card shadow-sm" style="width: 100%;">
+        <img src="{{staff.photoUrl}}" class="card-img-top" alt="{{staff.name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{staff.name}}</h5>
+          <p class="card-text">{{staff.shortDescription}}</p>
+          <a [routerLink]="['/person-details', staff.id]" class="btn btn-primary">Подробнее</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
